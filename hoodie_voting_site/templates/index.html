@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ user_input }}</h2>
+<h2>Content</h2>
+    <ul>
+        {% for picture in pictures %}
+            <li><img src="{{ url_for("static", filename=picture+".png") }}"></li>
+        {% endfor %}
+    </ul>
+<h2>Form</h2>
+    <div id="form">{% include "form.html" %}</div>
+{% endblock %}

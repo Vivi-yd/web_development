@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block head %}
+        <title>Title</title>
+        {% endblock %}
+    </head>
+    <body>
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+        <div id="footer">
+            {% block footer %}
+            <dl>
+                {% if debug %}<dt>{{ debug }}</dt>{% endif %}
+                <dt>Made with ❤️ Python {{ version }}</dt>
+            </dl>
+            {% endblock %}
+        </div>
+    </body>
+</html>
