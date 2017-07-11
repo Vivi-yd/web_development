@@ -5,9 +5,9 @@
 <h2>CSESoc Hoodies Competiton 2017</h2>
     <ul>
         {% for picture in pictures %}
-            <li><img src="{{ url_for("static", filename=picture+".png") }}"></li>
+            <li><img src="{{ url_for("static", filename=picture+".png") }}" class="entries"></li>
         {% endfor %}
     </ul>
-<h2>Form</h2>
+<h2>VOTE HERE!!!</h2>
     <div id="form">{% include "form.html" %}</div>
 {% endblock %}

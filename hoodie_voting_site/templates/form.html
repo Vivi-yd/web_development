@@ -1,7 +1,33 @@
 <form method="POST" action="{{ url_for('index') }}">
     <dl>
-        <dt>Form:
-        <dt><input type="number" name="num"></input>
+        <dt> Votes by entering 5 of your most preferred entries from 1st Preference to 5th Preference
+	<br>
+	<br>
+	<table>
+		<td>
+		    <dt><label for="first">1st: </label></dt>
+		    <dt><input id="first" type="number" name="num"></input>
+		</td>
+		<td>
+		    <dt><label for="second">2nd: </label></dt>
+		    <dt><input id="second" type="number" name="num"></input>
+		</td>
+		<td>
+		    <dt><label for="third">3rd: </label></dt>
+		    <dt><input id="third" type="number" name="num"></input>
+		</td>
+		<td>
+		    <dt><label for="forth">4th: </label></dt>
+		    <dt><input id="forth" type="number" name="num"></input>
+		</td>
+		<td>
+		    <dt><label for="fifth">5th: </label></dt>
+		    <dt><input id="fifth" type="number" name="num"></input>
+		</td>
+
+	</table>
+	<br>
+	<br>
         <dt><input type="submit" value="Submit"></input>
     </dl>
 </form>
