@@ -14,8 +14,23 @@ def index():
 
     if request.method == "POST":
         # handle the submission, display the vote accepted page
-        user_input = request.form['num']
-        return render_template('index.html', user_input = user_input)
+        user_input1 = request.form['num1']
+        user_input2 = request.form['num2'] 
+        user_input3 = request.form['num3'] 
+        user_input4 = request.form['num4']
+        user_input5 = request.form['num5']
+	
+	error_message = ""
+        
+	if not invalid_votes(user_input1, user_input2, user_input3, user_input4, user_input5): 
+		return render_template('success.html', user_input1 = user_input1,
+                          user_input2 = user_input2, user_input3 = user_input3, 
+                          user_input4 = user_input4,  user_input5 = user_input5)
+	else:
+		return render_template('index.html',
+			pictures = sample([str(i) for i in range(1, 20)], 19), 
+			error_message = "preferences must be blah blah")
+
     else:
         # display form
         return render_template('index.html',
@@ -25,6 +40,36 @@ def index():
 @app.route('/debug')
 def debug():
     return "We gotta be sneaky. we gotta be sneaky Charlie, ssneakyyy"
+
+def invalid_votes(*votes):
+    # return an error string
+    # if first preference is empty
+    if not votes[0]:
+        return "no vote made"
+
+    # find the last valid vote
+    last = max(i for i, v in enumerate(votes) if v)
+
+    # check no empty votes
+    if not all(votes[:last]):
+        return "votes must be continuous"
+
+    # check for intergers
+    try:
+        votes = tuple(map(int, votes))
+    except:
+        return "votes must be interger values"
+
+    # check for range
+    for vote in votes:
+        if not 1 <= vote <= 19:
+            return "votes must be between 1 and 19"
+
+    # check for uniquness
+    if len(votes) != len(set(votes)):
+        return "votes must be unique"
+
+    return False
 
 # opens db connection per request
 @app.before_request
