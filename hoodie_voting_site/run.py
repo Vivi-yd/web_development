@@ -33,7 +33,6 @@ def index():
             return render_template('index.html',
                 pictures = sample([str(i) for i in range(1, 20)], 19), 
                 error_message = invalid_votes(user_input1, user_input2, user_input3, user_input4, user_input5))
-        
         vote(g.db, zid, votes)
 
     else:
