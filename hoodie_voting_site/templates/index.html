@@ -3,11 +3,13 @@
 {% block content %}
 <h2>{{ user_input }}</h2>
 <h2>CSESoc Hoodies Competiton 2017</h2>
-    <ul>
+    <table>
         {% for picture in pictures %}
-            <li><img src="{{ url_for("static", filename=picture+".png") }}" class="entries"></li>
+            <tr>
+                <img src="{{ url_for("static", filename=picture+".png") }}" class="entries">
+            </tr>
         {% endfor %}
-    </ul>
+    </table>
 <h2>VOTE HERE!!!</h2>
 <h3>{{error_message}}</h3>
     <div id="form">{% include "form.html" %}</div>
