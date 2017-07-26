@@ -1,12 +1,12 @@
 import sqlite3
 
-def create_vote(conn, zid, candidate, ranking):
+def create_vote(conn, zid, candidage, ranking):
     with conn:
         conn.execute("REPLACE INTO votes (zid, candidate, ranking) VALUES (?, ?, ?)", (zid, candidate, ranking))
 
 def vote(conn, zid, votes):
-    for candidate, rankning in votes.items():
-        create_vote(conn, zid, candidate, ranking)
+    for ranking, candidate in votes.items():
+        create_vote(conn, zid, ranking, candidatg)
 
 '''
 def update(conn, zid, candidate, ranking):

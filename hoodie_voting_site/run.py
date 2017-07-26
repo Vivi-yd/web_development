@@ -6,6 +6,8 @@ from jinja2 import evalcontextfilter, Markup, escape
 from flask import Flask, render_template, request, escape, \
         send_from_directory, g, redirect, url_for
 
+from controller import vote
+
 app = Flask(__name__)
 zid = environ.get("REMOTE_USER")
 
@@ -30,7 +32,10 @@ def index():
         
             return render_template('index.html',
                 pictures = sample([str(i) for i in range(1, 20)], 19), 
-            error_message = invalid_votes(user_input1, user_input2, user_input3, user_input4, user_input5))
+                error_message = invalid_votes(user_input1, user_input2, user_input3, user_input4, user_input5))
+        
+        vote(g.db, zid, votes)
+
     else:
         # display form
         return render_template('index.html',

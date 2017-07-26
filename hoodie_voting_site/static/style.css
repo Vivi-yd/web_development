@@ -1,5 +1,10 @@
+img {
+    width: 100%;
+}
 
-.img {
-	width: 200px;
-
+.container {
+    display: grid;
+    width: 100%;
+    grid-template-rows: repeat(5, 20%);
+    grid-template-columns: repeat(4, 25%);
 }
