@@ -38,7 +38,7 @@ def index():
     else:
         # display form
         return render_template('index.html',
-                pictures = sample([str(i) for i in range(1,17)], 16))
+                pictures = sample([str(i) for i in range(1,20)], 19))
 
 # example test page
 @app.route('/debug')
